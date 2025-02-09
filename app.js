@@ -6,13 +6,17 @@ const products = require("./products");
 const users = require("./users");
 app.use(express.static(path.join(__dirname, "assets")));
 
-//Home Page:
+// ** Route for main page
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "assets", "index.html"));
 });
+
+// ** Route for about page
 app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "assets", "about.html"));
 });
+
+// ** Route for contact page
 app.get("/contact", (req, res) => {
   res.sendFile(path.join(__dirname, "assets", "contact.html"));
 });
@@ -35,6 +39,7 @@ app.get("/users", (req, res) => {
   }
   res.json(users);
 });
+// 404 error handler
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, "assets", "404.html"));
 });
